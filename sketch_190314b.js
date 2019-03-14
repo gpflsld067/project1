@@ -17,7 +17,7 @@ var rod = {
     rotateZ(atan2(this.dir.y, this.dir.x));
     noStroke();
     //fill(0, 0, 250);
-    box(5, 5, 200);
+    box(rep(5), rep(5), rep(200));
     pop();
   },
   setZ: function(z) {
@@ -33,7 +33,7 @@ let mx, my;
 const num = 200;
 
 function setup() {
-  createCanvas(800, 600, WEBGL);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   for (let i = 0; i < num; i++) {
     rods[i] = Object.create(rod);
     rods[i].pos = createVector(0, 0, 0);
@@ -46,14 +46,14 @@ function setup() {
 function draw() {
   ambientLight("#010468");
   //ambientLight("#fff600");
-  directionalLight("#01842a", 100, 300, 100);
-  directionalLight("#823800", 800, 800, 100);
+  directionalLight("#01842a", rep(100), rep(300), rep(100));
+  directionalLight("#823800", rep(800), rep(800), rep(100));
   background(255);
 //   for (let i = 0; i < 10; i++) {
 //     line(-370 + i * 100, -200, -330+ i *100,-200);
   
 //   }
-  rotateX(0.3 * PI);
+  //rotateX(0.3 * PI);
   mx = mouseX - width / 2;
   my = mouseY - height / 2;
 
@@ -65,4 +65,8 @@ function draw() {
     rods[i].move(rods[i - 1].pos.x, rods[i - 1].pos.y, rods[i - 1].pos.z);
     rods[i].display();
   }
+}
+
+function rep(input){
+return map(input,0,800,0,windowWidth);
 }
